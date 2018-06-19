@@ -88,6 +88,11 @@ resource "aws_cognito_user_pool" "pool" {
     sns_caller_arn = "${aws_iam_role.cidp.arn}"
   }
 
+  device_configuration {
+    challenge_required_on_new_device      = true
+    device_only_remembered_on_user_prompt = false
+  }
+
   password_policy {
     minimum_length    = 6
     require_lowercase = false
@@ -136,10 +141,5 @@ resource "aws_cognito_user_pool" "pool" {
   #   pre_token_generation           = "${aws_lambda_function.main.arn}"
   #   user_migration                 = "${aws_lambda_function.main.arn}"
   #   verify_auth_challenge_response = "${aws_lambda_function.main.arn}"
-  # }
-
-  # device_configuration {
-  #   challenge_required_on_new_device      = true
-  #   device_only_remembered_on_user_prompt = false
   # }
 }
