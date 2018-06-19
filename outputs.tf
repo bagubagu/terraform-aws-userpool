@@ -22,10 +22,6 @@ output "user_pool_client_secret" {
   value = "${aws_cognito_user_pool_client.client.client_secret}"
 }
 
-output "user_pool_domain_cloudfront_distribution_arn" {
-  value = "${aws_cognito_user_pool_domain.main.cloudfront_distribution_arn}"
-}
-
-output "user_pool_domain_s3_bucket" {
-  value = "${aws_cognito_user_pool_domain.main.s3_bucket}"
+output "user_pool_domain_url" {
+  value = "https://${local.hosted_zone_dash}.auth.us-east-1.amazoncognito.com"
 }
